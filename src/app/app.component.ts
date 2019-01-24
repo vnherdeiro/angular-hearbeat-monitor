@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { Subscription, fromEvent, Observable } from 'rxjs';
-import { filter, map, pairwise, scan, bufferCount } from 'rxjs/operators';
+import { filter, map, pairwise, scan, bufferCount, share } from 'rxjs/operators';
 
 import * as _ from 'lodash';
 
@@ -47,7 +47,8 @@ export class AppComponent {
 			);
 		this.moving_avg$ = this.heartrate$.pipe(
 			bufferCount( this.avg_window, 1), //stores the previous avg_window values with forward steps of 1
-			map( x => this.weightedAvg(x, this.weights))
+			map( x => this.weightedAvg(x, this.weights)),
+			share()
 			);
 		this.moving_avg$.subscribe( val => this.setVideoPlaybackRate( val));
 		// this.max$ = this.moving_avg$.pipe( scan( Math.max, 0));
@@ -67,7 +68,9 @@ export class AppComponent {
 	}
 
 	setVideoPlaybackRate( heartrate:number){
-		this.video_ref.nativeElement.playbackRate = this.heartrate2playback( heartrate);
+		if( this.video_ref) {
+			this.video_ref.nativeElement.playbackRate = this.heartrate2playback( heartrate);
+		}
 	}
 
 	heartrate2playback( heartrate:number){
