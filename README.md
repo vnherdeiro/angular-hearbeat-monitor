@@ -1,7 +1,20 @@
 # HearbeatMonitor
 
-### Minimal single page web app that monitors your hearbeat.
+### Minimal electron app that monitors your hearbeat.
 
-##### Usage: one hand on your jugular pulse, one hand on the space bar. Press the bar with every pulse.
+![alt text][logo]
 
-This project was generated with [Angular 7 CLI](https://github.com/angular/angular-cli).
+[logo]: ./screenshot.png "Screenshot"
+
+##### Build:
+```bash
+  npm run electron-build
+```
+##### Run:
+```bash
+  npm run electron
+```
+##### Usage
+> One hand on your jugular pulse, one hand on the space bar. Press the bar with every pulse.
+
+This project was generated with [Angular 7 CLI](https://github.com/angular/angular-cli) and [Electron](https://electronjs.org/).
