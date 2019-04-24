@@ -6,7 +6,9 @@
 
 [logo]: ./screenshot.png "Screenshot"
 
-##### Build:
+[Come play with me.](https://vnherdeiro.github.io/electron-hearbeat-monitor/)
+#### Locally
+##### Build
 ```bash
   npm run electron-build
 ```
